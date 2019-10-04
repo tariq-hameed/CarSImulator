@@ -26,21 +26,34 @@ namespace CarSImulator
                 {
                     case ConsoleKey.D1:
                     case ConsoleKey.NumPad1:
-                        Console.WriteLine("Brand: ");
+                        Write("Brand: ");
                         string brand = ReadLine();
 
                         Write("Model: ");
                         string model = ReadLine();
 
-                        Car newCar = new Car();
+                        Car newCar = new Car(brand, model);
 
-                        newCar.model = model;
-                        newCar.brand = brand;
+                        //newCar.model = model;
+                        //newCar.brand = brand;
                         carList[carListNextIndexPosition++] = newCar;
                         break;
 
                     case ConsoleKey.D2:
                     case ConsoleKey.NumPad2:
+
+                        WriteLine("Brand            Model ");
+                        WriteLine("-------------------------------------");
+
+                        foreach (var myList in carList)
+                        {
+                            if (myList == null) continue;
+                            {
+                                WriteLine($"{myList.Brandd()}      {myList.Model}");
+                            }
+                        }
+
+                        ReadKey();
 
                         break;
 
