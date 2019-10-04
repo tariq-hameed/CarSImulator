@@ -4,12 +4,14 @@
     {
         private string brand;
         private string model;
+        private string registrationNumber;
 
-        public Car(string brand, string model)
+        public Car(string brand, string model, string registrationNumber)
         {
 
             this.brand = brand;
             this.model = model;
+            this.registrationNumber = registrationNumber;
         }
         //public string Brand
         //{
@@ -26,17 +28,22 @@
         //    }
 
         //}
-        public string Brandd()
+        public string GetBrand()
         {
-            return model;
+            return brand;
         }
-        public string Model
+        public string GetModel
         {
 
             get
             {
                 return model;
             }
+        }
+        public string GetRegistrationNumber()
+        {
+
+            return registrationNumber;
         }
     }
 }

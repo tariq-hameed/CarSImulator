@@ -8,74 +8,93 @@ namespace CarSImulator
     {
         static void Main(string[] args)
         {
-            Car[] carList = new Car[10];
-            uint carListNextIndexPosition = 0;
             bool shouldNotExit = true;
+
+            Car[] carList = new Car[10];
+            uint carListCurrentIndexPosition = 0;
+
             while (shouldNotExit)
-
             {
+                WriteLine("1. Add car");
+                WriteLine("2. List cars");
+                WriteLine("3. Simulate speed");
+                WriteLine("4. Exit");
 
-                Console.WriteLine("1. Add car");
-                Console.WriteLine("2. List car");
-                Console.WriteLine("3. Simulate speed");
-                Console.WriteLine("4. Exit");
-                ConsoleKeyInfo keypressed = ReadKey(true);
+                ConsoleKeyInfo keyPressed = ReadKey(true);
+
                 Clear();
 
-                switch (keypressed.Key)
+                switch (keyPressed.Key)
                 {
                     case ConsoleKey.D1:
                     case ConsoleKey.NumPad1:
-                        Write("Brand: ");
-                        string brand = ReadLine();
+                        {
+                            Write("Brand: ");
 
-                        Write("Model: ");
-                        string model = ReadLine();
+                            string brand = ReadLine();
 
-                        Car newCar = new Car(brand, model);
+                            Write("Model: ");
 
-                        //newCar.model = model;
-                        //newCar.brand = brand;
-                        carList[carListNextIndexPosition++] = newCar;
+                            string model = ReadLine();
+
+                            Write("Registration number: ");
+
+                            string registrationNumber = ReadLine();
+
+                            Car newCar = new Car(brand, model, registrationNumber);
+
+                            carList[carListCurrentIndexPosition++] = newCar;
+                        }
+
                         break;
 
                     case ConsoleKey.D2:
                     case ConsoleKey.NumPad2:
-
-                        WriteLine("Brand            Model ");
-                        WriteLine("-------------------------------------");
-
-                        foreach (var myList in carList)
                         {
-                            if (myList == null) continue;
-                            {
-                                WriteLine($"{myList.Brandd()}      {myList.Model}");
-                            }
-                        }
+                            string brandHeader = "Brand".PadRight(10, ' ');
+                            string modelHeader = "Model".PadRight(10, ' ');
+                            string registrationNumberHeader = "Registration number";
 
-                        ReadKey();
+                            Write(brandHeader);
+                            Write(modelHeader);
+                            WriteLine(registrationNumberHeader);
+
+                            WriteLine("---------------------------------------------------");
+
+                            foreach (Car car in carList)
+                            {
+                                if (car == null) continue;
+
+                                string brand = car.GetBrand().PadRight(10, ' ');
+                                string model = car.GetModel.PadRight(10, ' ');
+                                string registrationNumber = car.GetRegistrationNumber().PadRight(10, ' ');
+
+                                Write(brand);
+                                Write(model);
+                                WriteLine(registrationNumber);
+                            }
+
+                            ReadKey(true);
+                        }
 
                         break;
 
                     case ConsoleKey.D3:
-                   
-                        
+                    case ConsoleKey.NumPad3:
+
                         break;
 
                     case ConsoleKey.D4:
-                    
+                    case ConsoleKey.NumPad4:
+
                         shouldNotExit = false;
+
                         break;
-
-
-
                 }
 
-
                 Clear();
-
             }
-        }
 
+        }
     }
 }
