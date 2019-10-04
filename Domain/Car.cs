@@ -2,48 +2,60 @@
 {
     class Car
     {
-        private string brand;
-        private string model;
+        //private string brand;
+        //private string model;
         private string registrationNumber;
+        
 
         public Car(string brand, string model, string registrationNumber)
         {
 
-            this.brand = brand;
-            this.model = model;
-            this.registrationNumber = registrationNumber;
+            //this.brand = brand;
+            //this.model = model;
+            //this.registrationNumber = registrationNumber;
+            Brand = brand;
+            Model = model;
+            RegistrationNumber = registrationNumber;
+
         }
-        //public string Brand
+
+        //public string GetBrand()
         //{
+        //    return brand;
+        //}
+        public string Brand { get; }
+        public string Model { get; }
+        //public string GetModel
+        //{
+
         //    get
         //    {
-
-        //        return brand;
+        //        return model;
         //    }
-        //    set
-        //    {
-        //        brand = value.Length > 4
-        //        ? value.Substring(0, 4)
-        //        : value;
-        //    }
-
         //}
-        public string GetBrand()
-        {
-            return brand;
-        }
-        public string GetModel
+        //public string GetRegistrationNumber()
+        public string RegistrationNumber
         {
 
+            //return registrationNumber;
             get
             {
-                return model;
+                return registrationNumber;
+            }
+            set
+            {
+                if (value.Length > 6)
+                {
+                    registrationNumber = value.Substring(0, 6);
+                }
+                else
+                {
+                    registrationNumber = value;
+                }
             }
         }
-        public string GetRegistrationNumber()
-        {
+        
 
-            return registrationNumber;
-        }
+
     }
 }
